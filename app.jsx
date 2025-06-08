@@ -199,7 +199,7 @@
         const [yamlInput, setYamlInput] = useState('');
 
         useEffect(() => {
-            console.debug("あFeedbackGenerator useEffect triggered with exportedYaml:", exportedYaml);
+            console.debug("FeedbackGenerator useEffect triggered with exportedYaml:", exportedYaml);
             if (exportedYaml) {
                 setYamlInput(exportedYaml);
                 generateFeedbackComponent(exportedYaml);
@@ -207,7 +207,7 @@
         }, [exportedYaml]);
 
         const generateFeedbackComponent = async (yamlData) => {
-            console.debug("いgenerateFeedback called with yamlData:", yamlData);
+            console.debug("generateFeedback called with yamlData:", yamlData);
             if (yamlData.trim() === "") {
                 console.warn("YAML data is empty.");
                 setFeedbackContent('<span class="error">YAMLデータを入力してください。</span>');

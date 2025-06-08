@@ -1,3 +1,4 @@
+const encouragementPresets = {
     "原稿": {
       "わかりやすい英語で書かれているか": {
         5: [
