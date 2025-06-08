@@ -62,3 +62,7 @@ your Apps Script project.
    * Click **Deploy**.
    * When prompted, authorize if needed, then copy the **Web app URL** that’s displayed for future access.
 
+
+
+https://github.com/user-attachments/assets/f7ef0605-80d7-462a-8f54-8eae8dd266a7
+
