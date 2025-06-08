@@ -1,0 +1,279 @@
+    /* style.css */
+
+/* 既存のCSSスタイル */
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.tree-container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.tree {
+    list-style-type: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tree::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    border-left: 1px solid #ccc;
+    bottom: 0;
+}
+
+.tree li {
+    margin: 0;
+    padding: 10px 0 0 20px;
+    position: relative;
+}
+
+.tree li::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    width: 10px;
+    height: 0;
+    border-top: 1px solid #ccc;
+}
+
+.tree-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.toggle-button {
+    cursor: pointer;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+    transition: transform 0.3s;
+    user-select: none;
+    font-size: 14px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.toggle-button.expanded {
+    transform: rotate(90deg);
+}
+
+.item-label {
+    margin-right: 10px;
+    flex-grow: 1;
+    cursor: default;
+}
+
+.progress-indicator {
+    display: flex;
+    gap: 5px;
+}
+
+.step {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #999;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    font-size: 12px;
+}
+
+.step:hover {
+    transform: scale(1.2);
+}
+
+.step.active {
+    background-color: #4caf50;
+    color: white;
+    border-color: #4caf50;
+}
+
+.step:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #4caf50;
+}
+
+.hidden {
+    display: none;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 親項目の進捗バー */
+.progress-bar-container {
+    width: 200px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0%;
+    transition: width 0.5s ease-in-out, background-color 0.3s;
+}
+
+.progress-bar-container:hover .progress-bar {
+    background-color: #45a049;
+}
+
+.progress-text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    pointer-events: none;
+}
+
+.snapshot-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.snapshot-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.snapshot-item:last-child {
+    border-bottom: none;
+}
+
+.snapshot-item button {
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+/* Collapsible sections */
+.collapsible-section {
+    /* flex: 1; 既に横並びにするコンテナ内で均等配置されるため削除 */
+}
+.collapsible-header {
+    cursor: pointer;
+    font-weight: bold;
+    background: #eaeaea;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px; /* お好みで調整 */
+}
+.collapsible-content {
+    margin-top: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: none;
+    background: #fafafa;
+}
+.collapsible-content.show {
+    display: block;
+}
+
+/* 2つの折りたたみセクションを横一列に並べる用のコンテナ */
+.collapsible-sections-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .progress-bar-container {
+        width: 100%;
+    }
+    .collapsible-sections-row {
+        display: block; /* スマホなどでは縦に並べる */
+    }
+}
+
+/* Comparison checkboxes */
+.comparison-list {
+    margin-top: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.comparison-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* フィードバックセクションのスタイリング */
+.feedback-section {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.feedback-section h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+.feedback-section textarea {
+    width: 100%;
+    height: 150px;
+    font-family: monospace;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.feedback-section button {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.feedback-section button:hover {
+    background-color: #0b7dda;
+}
+.feedback-section #feedbackContent {
+    margin-top: 20px;
+}
+.feedback-section .error {
+    color: red;
+    font-weight: bold;
+}
