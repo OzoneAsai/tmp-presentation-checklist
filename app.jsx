@@ -215,8 +215,8 @@
             }
 
             setIsLoading(true);
-            setFeedbackContent('うフィードバックを生成中...');
-            console.debug("うGenerating feedback...");
+            setFeedbackContent('フィードバックを生成中...');
+            console.debug("Generating feedback...");
 
             // 外部スクリプトの FeedbackGenerator.createFeedbackFromYAML を使用
             const result = FeedbackGenerator.createFeedbackFromYAML(yamlData);
