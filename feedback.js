@@ -1381,47 +1381,6 @@ const encouragementPresets = {
     }
   }
   
-/**
- * フィードバック生成関数
- * 
- * @param {string} yamlInput - 評価データを含むYAML形式の文字列。
- * @returns {Object} フィードバック結果。成功時はフィードバックテキストを含み、エラー時はエラーメッセージを含む。
- */
-function createFeedbackFromYAML(yamlInput) {
-    try {
-        const parsedData = parseYAML(yamlInput);
-
-        // 「評価」部分を取り出してオブジェクトに変換
-        const evaluationArray = parsedData["評価"] || [];
-        const evaluationData = {};
-
-        evaluationArray.forEach(categoryObj => {
-            for (const category in categoryObj) {
-                if (categoryObj.hasOwnProperty(category)) {
-                    evaluationData[category] = categoryObj[category];
-                }
-            }
-        });
-
-        if (Object.keys(evaluationData).length === 0) {
-            return { success: false, message: "評価データが正しくありません。" };
-        }
-
-        // フィードバック生成
-        const feedbackText = generateFeedback(
-            evaluationData,
-            encouragementPresets,
-            improvementPresets
-        );
-
-        return { success: true, feedback: feedbackText };
-
-    } catch (error) {
-        console.error("Error generating feedback:", error);
-        return { success: false, message: "エラーが発生しました: " + error.message };
-    }
-}
-
   // モジュールとしてエクスポート（Node.jsの場合）
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = {
