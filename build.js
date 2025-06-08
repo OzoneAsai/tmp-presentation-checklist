@@ -1,0 +1,11 @@
+const fs = require('fs');
+let html = fs.readFileSync('index.html', 'utf8');
+const style = fs.readFileSync('style.css', 'utf8');
+html = html.replace('<link rel="stylesheet" href="style.css">', `<style>\n${style}\n</style>`);
+const feedback = fs.readFileSync('feedback.js', 'utf8');
+html = html.replace('<script src="feedback.js"></script>', `<script>\n${feedback}\n</script>`);
+const app = fs.readFileSync('app.jsx', 'utf8');
+html = html.replace('<script type="text/babel" src="app.jsx"></script>', `<script type="text/babel">\n${app}\n</script>`);
+fs.mkdirSync('dist', { recursive: true });
+fs.writeFileSync('dist/Index.html', html);
+console.log('Built dist/Index.html');
