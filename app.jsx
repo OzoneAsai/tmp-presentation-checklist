@@ -1040,6 +1040,21 @@
             handleExportYAML(userName || 'default_user', setExportedYaml, true);
         };
 
+        // JSONエクスポート
+        const handleExportJSON = () => {
+            console.debug("handleExportJSON called.");
+            const snapshotsKey = `snapshots_${userName || 'default_user'}`;
+            const snapshots = JSON.parse(localStorage.getItem(snapshotsKey)) || [];
+            const exportData = { snapshots };
+            const jsonStr = JSON.stringify(exportData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'progress_backup.json';
+            link.click();
+        };
+
         // JSONインポート
         const handleImportJSONFile = (e) => {
             console.debug("handleImportJSONFile called with event:", e);
@@ -1183,6 +1198,7 @@
                         <div className={`collapsible-content ${showExportImport ? 'show' : ''}`}>
                             <button onClick={handleExportText}>テキストとしてエクスポートする</button>
                             <button onClick={handleExportPDF}>PDFとしてエクスポート</button>
+                            <button onClick={handleExportJSON}>JSONとしてエクスポート</button>
                             <div style={{ marginTop: '10px' }}>
                                 <label
                                     htmlFor="import-json"
